@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/Todo", {
+mongoose.connect("mongodb+srv://harihareshwar08:h12@cluster0.7kphm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log("MongoDB Connected"))
@@ -15,5 +15,5 @@ mongoose.connect("mongodb://127.0.0.1:27017/Todo", {
 
 app.use('/api/tasks', require('./routes/taskRoutes'));
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
