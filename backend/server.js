@@ -15,5 +15,6 @@ mongoose.connect("mongodb://127.0.0.1:27017/Todo", {
 
 app.use('/api/tasks', require('./routes/taskRoutes'));
 
-const PORT = 4000;
+
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
