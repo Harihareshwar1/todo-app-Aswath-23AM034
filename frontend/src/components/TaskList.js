@@ -15,7 +15,7 @@ const TaskList = ({ userEmail }) => {
 
     const fetchTasks = async () => {
         try {
-            const response = await axios.get(`https://todo-app-aswath-23am034-1.onrender.com/${userEmail}`);
+            const response = await axios.get(`https://todo-app-aswath-23am034-1.onrender.com/api/tasks${userEmail}`);
             setTasks(response.data.tasks);
             setCompletedTasks(response.data.completedTasks);
         } catch (error) {
@@ -33,7 +33,7 @@ const TaskList = ({ userEmail }) => {
         }
 
         try {
-            await axios.post("https://todo-app-aswath-23am034-1.onrender.com", {
+            await axios.post("https://todo-app-aswath-23am034-1.onrender.com/api/tasks", {
                 userEmail,
                 title: newTask,
                 deadline: newDeadline,
@@ -48,7 +48,7 @@ const TaskList = ({ userEmail }) => {
 
     const updateDueDate = async (taskId, deadline) => {
         try {
-            await axios.put("https://todo-app-aswath-23am034-1.onrender.com/updateDueDate", { taskId, deadline });
+            await axios.put("https://todo-app-aswath-23am034-1.onrender.com/api/tasks/updateDueDate", { taskId, deadline });
             fetchTasks();
         } catch (error) {
             console.error("Error updating due date:", error);
@@ -57,7 +57,7 @@ const TaskList = ({ userEmail }) => {
 
     const deleteTask = async (taskId) => {
         try {
-            await axios.delete(`https://todo-app-aswath-23am034-1.onrender.com/${taskId}`);
+            await axios.delete(`https://todo-app-aswath-23am034-1.onrender.com/api/tasks/${taskId}`);
             fetchTasks();
         } catch (error) {
             console.error("Error deleting task:", error);
@@ -66,7 +66,7 @@ const TaskList = ({ userEmail }) => {
 
     const moveTask = async (taskId, direction) => {
         try {
-            await axios.put("https://todo-app-aswath-23am034-1.onrender.com/reorder", { userEmail, taskId, direction });
+            await axios.put("https://todo-app-aswath-23am034-1.onrender.com/api/tasks/reorder", { userEmail, taskId, direction });
             fetchTasks();
         } catch (error) {
             console.error("Error moving task:", error);
@@ -75,7 +75,7 @@ const TaskList = ({ userEmail }) => {
 
     const completeTask = async (taskId) => {
         try {
-            await axios.put("https://todo-app-aswath-23am034-1.onrender.com/complete", { taskId });
+            await axios.put("https://todo-app-aswath-23am034-1.onrender.com/api/tasks/complete", { taskId });
             fetchTasks();
         } catch (error) {
             console.error("Error completing task:", error);
