@@ -31,7 +31,7 @@ function App() {
 
     const fetchTasks = async (email) => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/tasks/${email}`);
+            const response = await axios.get(`https://todo-app-aswath-23am034-1.onrender.com/${email}`);
             setTasks(response.data);
         } catch (error) {
             console.error("Error fetching tasks:", error);
