@@ -15,7 +15,7 @@ const TaskList = ({ userEmail }) => {
 
     const fetchTasks = async () => {
         try {
-            const response = await axios.get(`https://todo-app-aswath-23am034-1.onrender.com/api/tasks${userEmail}`);
+            const response = await axios.get(`https://todo-app-aswath-23am034-1.onrender.com/api/tasks/${userEmail}`);
             setTasks(response.data.tasks);
             setCompletedTasks(response.data.completedTasks);
         } catch (error) {
